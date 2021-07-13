@@ -23,8 +23,7 @@ public class NotesController {
     }
 
     @PostMapping("/notes")
-    public Note addNote(@RequestBody Note note) {
-        notesRepository.save(note);
-        return note;
+    public ResponseEntity<Note> addNote(@RequestBody Note note) {
+        return new ResponseEntity<>(notesRepository.save(note), HttpStatus.CREATED);
     }
 }
