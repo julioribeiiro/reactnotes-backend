@@ -26,4 +26,9 @@ public class NotesController {
     public ResponseEntity<Note> addNote(@RequestBody Note note) {
         return new ResponseEntity<>(notesRepository.save(note), HttpStatus.CREATED);
     }
+
+    @GetMapping("/notes/{id}")
+    public ResponseEntity<Note> getNote(@PathVariable Long id) {
+        return new ResponseEntity<>(notesRepository.findById(id).get(), HttpStatus.OK);
+    }
 }
